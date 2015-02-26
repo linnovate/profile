@@ -1,22 +1,12 @@
 'use strict';
 
 /* jshint -W098 */
-angular.module('mean.profile').controller('ProfileController', ['$scope', 'Global', 'Profile','Menus',
-  function($scope, Global, Profile, Menus) {
+angular.module('mean.profile').controller('ProfileController', ['$scope', 'Global','Menus',
+  function($scope, Global, Menus) {
     $scope.global = Global;
-    $scope.global.hasProfile = false;
     $scope.package = {
       name: 'profile'
     };
 
-
-    // This should move to Menus
-    $scope.menus = {};
-    Menus.query({
-      name: 'profile',
-      defaultMenu: []
-    }, function(menu) {
-      $scope.menus.profile = menu;
-    });
   }
 ]);

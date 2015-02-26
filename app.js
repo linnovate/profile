@@ -22,7 +22,7 @@ Profile.register(function(app, auth, database) {
     title: 'Account',
     link: 'profile settings',
     roles: ['authenticated'],
-    menu: 'profile'
+    menu: 'account'
   });
   
   Profile.aggregateAsset('css', 'profile.css');

@@ -1,27 +1,17 @@
 'use strict';
 
+var profile = require('../controllers/profile.js');
+
 /* jshint -W098 */
 // The Package is past automatically as first parameter
 module.exports = function(Profile, app, auth, database) {
 
-  app.get('/profile/example/anyone', function(req, res, next) {
-    res.send('Anyone can access this');
+// Get profile data
+  app.get('/profile/get', auth.requiresAdmin, function(req, res, next) {
+
+
+    var profileObject = profile.getProfile(req.user.email);
+    res.send(req.user);
   });
 
-  app.get('/profile/example/auth', auth.requiresLogin, function(req, res, next) {
-    res.send('Only authenticated users can access this');
-  });
-
-  app.get('/profile/example/admin', auth.requiresAdmin, function(req, res, next) {
-    res.send('Only users with Admin role can access this');
-  });
-
-  app.get('/profile/example/render', function(req, res, next) {
-    Profile.render('index', {
-      package: 'profile'
-    }, function(err, html) {
-      //Rendering a view from the Package server/views
-      res.send(html);
-    });
-  });
 };
