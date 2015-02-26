@@ -4,9 +4,12 @@
 angular.module('mean.profile').controller('ProfileController', ['$scope', 'Global', 'Profile','Menus',
   function($scope, Global, Profile, Menus) {
     $scope.global = Global;
+    $scope.global.hasProfile = false;
     $scope.package = {
       name: 'profile'
     };
+
+
     // This should move to Menus
     $scope.menus = {};
     Menus.query({

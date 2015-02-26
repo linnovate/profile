@@ -1,0 +1,13 @@
+<li>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <img src="http://milkshayk.com/coming-soon/assets/img/activities/activity-couple-1.png"/>
+        <span>{{global.user.name}}</span> <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+        <li data-ng-repeat="item in menus.account" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
+            <a mean-token="item.link" ui-sref='{{item.link}}'>{{item.title}}</a>
+        </li>
+        <li><a href="/logout">Log Out</a>
+        </li>
+    </ul>
+</li>
