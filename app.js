@@ -27,6 +27,18 @@ Profile.register(function(app, auth, database) {
   
   Profile.aggregateAsset('css', 'profile.css');
 
+
+  Profile.settings(function(err,settings){
+      var User = database.connection.model('User');
+      User.update({profile:{$exists:false}},{$set:{profile:{}}}).exec(
+        function(err){
+          if (err){
+            console.log(err);
+          }
+        }
+      )
+  });
+
   /**
     //Uncomment to use. Requires meanio@0.3.7 or above
     // Save settings with callback
